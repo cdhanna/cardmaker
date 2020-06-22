@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="css/mystyles.css">
+  </head>
+  <body>
+
+    <div id="project-selector" class="shown">
+
+      <section class="hero is-primary">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              Card Maker
+            </h1>
+            <h2 class="subtitle">
+              Select a project file
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <div>
+        <button id="project-open-button" class="button is-info is-outlined">Open</button>
+        <button id="project-new-button" class="button is-info is-outlined">New</button>
+        <button id="project-existing-button" class="button is-info is-outlined hidden">Cancel</button>
+
+      </div>
+    </div>
+
+    <div id="project-content" class="hidden">
+
+      <div class="panel">
+        <div class="panel-heading">
+          Project Settings
+        </div>
+        <div class="panel-block">
+          <div class="control">
+            <div class="field">
+              <label class="label">Project Name</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Project Name">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Data Sheet</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Data Sheet">
+              </div>
+            </div>
+          </div>
+                
+        </div>
+      </div>
+
+      <button id="project-pick-button" class="button is-link is-outlined">Choose a different project</button>
+      <button id="project-okay-button" class="button is-link">Okay</button>
+
+    </div>
+
+    <div id="main-content" class="hidden">
+      
+      <button id="main-project-button" class="button is-link is-outlined">Project</button>
+
+      <div id="page-tabs" class="tabs is-centered">
+        <ul>
+          <li id="templates-tab" class="is-active" data-content="templates-content"><a>Templates</a></li>
+          <li id="symbols-tab" class="" data-content="symbols-content"><a>Symbols</a></li>
+          <li id="cards-tab"  class="" data-content="cards-content"><a>Cards</a></li>
+          <li id="export-tab" class="" data-content="exports-content"><a>Export</a></li>
+        </ul>
+      </div>
+
+
+
+      <div id="templates-content" class="shown">
+
+        I am templates
+
+      </div>
+
+      
+      <div id="symbols-content" class="hidden">
+
+        I am symbols, and I'm not implemented yet.
+
+      </div>
+
+      <div id="cards-content" class="hidden">
+
+        I am cards, and I'm not implemented yet.
+
+      </div>
+
+      <div id="exports-content" class="hidden">
+
+        I am exports, and I'm not implemented yet.
+
+      </div>
+
+    </div>
+
+  </body>
+</html>
