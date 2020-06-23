@@ -29,8 +29,12 @@
 require('./mystyles.scss');
 
 import './services/navigation';
+import './services/sheet';
 
 import {isProjectLoaded} from './services/project';
+import './view/projectSettings';
+import './view/templates';
+import './view/art';
 
 isProjectLoaded();
 

@@ -42,13 +42,24 @@
             <div class="field">
               <label class="label">Project Name</label>
               <div class="control">
-                <input class="input" type="text" placeholder="Project Name">
+                <input id="project-name-input" class="input" type="text" placeholder="Project Name" data-bind="project.name">
               </div>
             </div>
             <div class="field">
-              <label class="label">Data Sheet</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="Data Sheet">
+              <label class="label">Data File</label>
+
+              <div class="file is-right is-info">
+                <label class="file-label" style="flex-grow: 1;">
+                  <!-- <input id="project-csv-file-input" class="file-input" type="file" name="resume" > -->
+                  <span id="project-csv-file-button" class="file-cta">
+                    <span class="file-label">
+                      Data File
+                    </span>
+                  </span>
+                  <span id="project-csv-file-text" class="file-name" style="flex-grow: 1; max-width: none;" data-bind="project.csvPath">
+                    Sample Content
+                  </span>
+                </label>
               </div>
             </div>
           </div>
@@ -59,6 +70,43 @@
       <button id="project-pick-button" class="button is-link is-outlined">Choose a different project</button>
       <button id="project-okay-button" class="button is-link">Okay</button>
 
+    </div>
+
+
+    <div id="art-selection" class="shown">
+      <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <div class="panel">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Art Picker - Background Image</p>
+              <button id="art-close-button" class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+              <div class="control">
+                <div class="field">
+                  <label class="label">Search</label>
+                  <div class="control">
+                    <input id="art-search-input" class="input" type="text" placeholder="Search" data-bind="art.search">
+                  </div>
+                </div>
+              </div>
+              <div class="art-preview-container">
+                
+                <div id="art-preview-archetype" class="box art-preview" title="img_path">
+                  <img src="">
+
+                </div>
+
+              </div>
+            </section>
+            <footer class="modal-card-foot">
+              <button id="art-cancel-button" class="button">Cancel</button>
+            </footer>
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
     </div>
 
     <div id="main-content" class="hidden">
@@ -78,7 +126,86 @@
 
       <div id="templates-content" class="shown">
 
-        I am templates
+        <div class="columns">
+
+          <div class="column">
+            
+            <aside class="menu">
+              <p class="menu-label">
+                Card Templates
+              </p>
+              <ul class="menu-list">
+                <li id="template-entry-archetype">
+                  <a>
+                    Basic Opportunity
+                  </a>
+                </li>
+              </ul>
+            
+            </aside>
+          </div>
+
+          <div class="column is-half">
+            Template stuff goes here
+
+            <div id="template-card-container">
+              <!-- IMAGE EDITOR GOES HERE -->
+            </div>
+
+          </div>
+
+          
+          <div class="column">
+            <aside class="menu right">
+              <p class="menu-label">
+                Properties
+              </p>
+              <ul class="menu-list">
+                <li>
+                  <div class="control">
+                    <div class="field">
+                      <label class="label">Region Name</label>
+                      <div class="control">
+                        <input id="region-name-input" class="input" type="text" placeholder="Region Name">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="control">
+                    <div class="field">
+                      <label class="label">Data Source</label>
+                      <div class="control">
+                        <div class="dropdown is-active" style="display: block;">
+                          <div class="dropdown-trigger">
+                            <input id="region-name-input" class="input" type="text" placeholder="Region Name">
+
+                          </div>
+                          <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                            <div class="dropdown-content">
+                              <div class="dropdown-item">
+                                <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
+                              </div>
+                              <hr class="dropdown-divider">
+                              <div class="dropdown-item">
+                                <p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
+                              </div>
+                              <hr class="dropdown-divider">
+                              <a href="#" class="dropdown-item">
+                                This is a link
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+
 
       </div>
 

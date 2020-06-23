@@ -104,5 +104,6 @@ function initTab(tab: Element){
 export default {
     showProjectSelection,
     showProjectSettings,
+    showMain,
     existingProjectButton
 }

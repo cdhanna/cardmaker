@@ -1,6 +1,7 @@
 import {remote} from 'electron';
 import nav from './navigation';
 import { Project } from '../models/project';
+import data from './data';
 
 const fs = remote.require('fs');
 const path = remote.require('path');
@@ -16,8 +17,9 @@ if (isProjectLoaded()){
     nav.existingProjectButton.classList.remove('hidden');
 
     cachedProject = loadProject();
+    bindProjectData();
     console.log('loaded project', cachedProject)
-    nav.showProjectSettings();
+    nav.showMain();
 }
 
 openProjectButton.addEventListener('click', (evt: Event) => {
@@ -38,6 +40,7 @@ openProjectButton.addEventListener('click', (evt: Event) => {
         projectDirectory: projectDirectory
     });
     cachedProject = loadProject();
+    bindProjectData();
     nav.showProjectSettings();
 
 });
@@ -60,6 +63,7 @@ newProjectButton.addEventListener('click', (evt:Event) => {
         projectDirectory: result[0]
     });
     cachedProject = createNewProject()
+    bindProjectData();
     nav.showProjectSettings();
 
 });
@@ -86,14 +90,41 @@ function getProjectFilePath(): string {
     return `${getStorageData().projectDirectory}/project.cardmaker.json`;
 }
 
+function getProjectPath(): string {
+    return `${getStorageData().projectDirectory}`
+}
+
 function createNewProject(): Project {
     const project = new Project();
     project.csvPath = './data.csv',
     project.name = 'my project';
+    project.templates = [];
 
     saveProject(project);
-
     return project;
+}
+
+function bindProjectData() {
+    data.provide('project.name', 
+        () => cachedProject.name,
+        v => {
+            cachedProject.name = v;
+            saveProject(cachedProject);
+        }
+    );
+    data.provide('project.csvPath', 
+        () => cachedProject.csvPath,
+        v => {
+            cachedProject.csvPath = v;
+            saveProject(cachedProject);
+        }
+    );
+    data.provide('project.templates', 
+        () => cachedProject.templates,
+        v => {
+
+        });
+    data.refreshElements();
 }
 
 function loadProject(): Project {
@@ -104,6 +135,7 @@ function loadProject(): Project {
         const json = fs.readFileSync(getProjectFilePath(), 'utf-8');
         const project = JSON.parse(json) as Project;
         console.log('loaded project', project);
+
         return project;
     } catch (ex){
         console.error('failed to load project', ex);
@@ -134,5 +166,6 @@ export interface Storage {
 
 export default {
     getStorageData,
-    isProjectLoaded
+    isProjectLoaded,
+    getProjectPath
 }
